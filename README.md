@@ -17,7 +17,7 @@ This repository contains the configuration for running a React.js application us
 This Docker image has been thoroughly scanned for vulnerabilities to ensure a secure environment for your React.js application. The image has passed all vulnerability assessments using Docker's built-in security tools, including Docker Scout. Regular updates to the base image and dependencies are recommended to maintain a high level of security.
 
 <div align="center">
-  <img src="../images/react-js-security.png" alt="Docker Scout check" />
+  <img src="./images/react-js-security.png" alt="Docker Scout check" />
 </div>
 
 - **Article**: [Docker Scout in Action](https://levelup.gitconnected.com/docker-scout-in-action-63e7c812532a?sk=120903755538c5065585d458d5e1eaa8)
@@ -61,7 +61,7 @@ The following variables are defined in the `Taskfile` and `Makefile` and can be 
 | `IMAGE_NAME`     | The name of the Docker image.                                                         | `react-app`           |
 | `CONTAINER_NAME` | The name of the Docker container.                                                     | `react-app-container` |
 | `HOST_PORT`      | The port on the host machine that the container will map to.                          | `3000`                |
-| `CONTAINER_PORT` | The port inside the Docker container where Nginx serves the application.              | `8080`                  |
+| `CONTAINER_PORT` | The port inside the Docker container where Nginx serves the application.              | `8080`                |
 | `DOCKERFILE`     | The Dockerfile to use.                                                                | `Dockerfile`          |
 | `NODE_VERSION`   | The version of Node.js used in the base image. Can be updated for easier migrations.  | `22.14.0-alpine`      |
 | `NGINX_VERSION`  | The version of Nginx used in the export configuration. Can be customized or upgraded. | `alpine3.21`          |
