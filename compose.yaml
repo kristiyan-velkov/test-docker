@@ -1,0 +1,29 @@
+services:
+  react-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: docker-reactjs-sample
+    ports:
+      - "8080:8080"
+    depends_on:
+      - react-test
+
+  react-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+    depends_on:
+      - react-test
+  react-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["npm", "run", "test"]
