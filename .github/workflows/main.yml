@@ -33,7 +33,6 @@ jobs:
         with:
           context: .
           dockerfile: Dockerfile.dev
-          target: test
           tags: reactjs-test:latest
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
