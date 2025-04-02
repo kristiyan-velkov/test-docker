@@ -32,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          dockerfile: Dockerfile.dev
+          file: Dockerfile.dev
           tags: reactjs-test:latest
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
