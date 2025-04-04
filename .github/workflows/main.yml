@@ -45,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          dockerfile: Dockerfile.dev
+          file: Dockerfile.dev
           tags: ${{ steps.repo.outputs.REPO_NAME }}-dev:latest
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          dockerfile: Dockerfile
+          file: Dockerfile
           target: prod
           push: true
           platforms: linux/amd64,linux/arm64
