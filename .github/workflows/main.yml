@@ -58,7 +58,7 @@ jobs:
             --workdir /app \
             --entrypoint "" \
             ${{ steps.repo.outputs.REPO_NAME }}-dev:latest \
-            sh -c "npm install && npm run test --reporter=verbos"
+            sh -c "npm install && npm run test --reporter=verbose"
         env:
           CI: true
           NODE_ENV: test
