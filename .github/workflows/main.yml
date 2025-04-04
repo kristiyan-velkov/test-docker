@@ -58,7 +58,11 @@ jobs:
             --workdir /app \
             --entrypoint "" \
             ${{ steps.repo.outputs.REPO_NAME }}-dev:latest \
-            npm run test
+            sh -c "npm install && npm run test --reporter=verbos"
+        env:
+          CI: true
+          NODE_ENV: test
+        timeout-minutes: 3
 
       # 8. Authenticate to Docker Hub using secrets
       - name: Log in to Docker Hub
