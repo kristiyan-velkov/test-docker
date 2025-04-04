@@ -27,13 +27,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      #Get Github repository name
+      - name: Extract repo name
+        id: repo
+        run: echo "REPO_NAME=${GITHUB_REPOSITORY##*/}" >> "$GITHUB_OUTPUT"
+
       # Build test image
       - name: Build Docker image for tests
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: Dockerfile.dev
-          tags: reactjs-test:latest
+          dockerfile: Dockerfile.dev
+          tags: ${{ steps.repo.outputs.REPO_NAME }}:latest
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -41,7 +46,7 @@ jobs:
       # Run tests in container
       - name: Run tests inside container
         run: |
-          docker run --rm reactjs-test:latest npm run test
+          docker run --rm tags: ${{ steps.repo.outputs.REPO_NAME }}:latest npm run test
 
       # Build and push production image to Docker Hub
       - name: Log in to Docker Hub
@@ -54,7 +59,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: Dockerfile
+          dockerfile: Dockerfile
+          target: prod
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: christiyan14/test:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_PROJECT_NAME }}:latest
