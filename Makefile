@@ -5,7 +5,7 @@ CONTAINER_NAME = react-js-app-container
 HOST_PORT = 3000
 CONTAINER_PORT = 8080
 DOCKERFILE = Dockerfile
-NODE_VERSION = 22.14.0-alpine
+NODE_VERSION = 22.23.4-alpine
 NGINX_VERSION = alpine3.21
 NODE_ENV=production
 
